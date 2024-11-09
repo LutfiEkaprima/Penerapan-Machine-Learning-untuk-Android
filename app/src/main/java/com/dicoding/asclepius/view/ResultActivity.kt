@@ -66,6 +66,7 @@ class ResultActivity : AppCompatActivity() {
                 confidenceScore = confidenceScore
             )
 
+
             lifecycleScope.launch(Dispatchers.IO) {
                 analysisResultDatabase.analisysdao().insertResult(analysisResult)
                 runOnUiThread {
