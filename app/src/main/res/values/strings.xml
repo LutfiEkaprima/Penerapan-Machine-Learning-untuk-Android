@@ -8,4 +8,5 @@
     <string name="hasil_analisis">Hasil Analisis</string>
     <string name="gambar_yang_diambil">Gambar yang diambil</string>
     <string name="image_classifier_failed">Image classifier failed to initialize. See error logs for details</string>
+    <string name="simpan_analysis">Simpan Analysis</string>
 </resources>
