@@ -29,7 +29,7 @@ class ResultActivity : AppCompatActivity() {
 
         binding.resultText.text = if (classificationResult != null) {
             val scorePercentage = String.format("%.2f", classificationScore * 100)
-            "$classificationResult Score: $scorePercentage%"
+            "$classificationResult $scorePercentage%"
         } else {
             getString(R.string.image_classifier_failed)
         }
