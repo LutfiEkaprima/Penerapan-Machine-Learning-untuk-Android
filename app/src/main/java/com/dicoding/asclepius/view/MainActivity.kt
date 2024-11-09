@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -24,6 +25,8 @@ class MainActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListen
     private lateinit var binding: ActivityMainBinding
     private lateinit var imageClassifierHelper: ImageClassifierHelper
     private var currentImageUri: Uri? = null
+
+    private val viewModel: MainViewModel by viewModels()
 
     companion object {
         private const val REQUEST_CODE_GALLERY = 100
@@ -40,6 +43,11 @@ class MainActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListen
             classifierListener = this
         )
 
+        viewModel.imageUri?.let {
+            currentImageUri = it
+            showImage()
+        }
+
         binding.galleryButton.setOnClickListener {
             if (isStoragePermissionRequired()) {
                 if (checkStoragePermission()) {
@@ -48,7 +56,6 @@ class MainActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListen
                     requestStoragePermission()
                 }
             } else {
-                // Langsung buka galeri pada Android 10 ke atas
                 startGallery()
             }
         }
@@ -57,7 +64,6 @@ class MainActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListen
     }
 
     private fun isStoragePermissionRequired(): Boolean {
-        // Izin hanya diperlukan pada Android 9 atau lebih rendah
         return Build.VERSION.SDK_INT <= Build.VERSION_CODES.P
     }
 
@@ -100,6 +106,7 @@ class MainActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListen
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_GALLERY && resultCode == Activity.RESULT_OK) {
             currentImageUri = data?.data
+            viewModel.imageUri = currentImageUri
             showImage()
         }
     }
