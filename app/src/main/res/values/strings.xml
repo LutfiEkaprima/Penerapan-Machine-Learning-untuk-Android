@@ -7,9 +7,10 @@
     <string name="result">Hasil Analisis</string>
     <string name="hasil_analisis">Hasil Analisis</string>
     <string name="gambar_yang_diambil">Gambar yang diambil</string>
-    <string name="image_classifier_failed">Image classifier failed to initialize. See error logs for details</string>
+    <string name="image_classifier_failed">Image classifier failed to initialize</string>
     <string name="simpan_analysis">Simpan Analysis</string>
     <string name="confidence_score">Confidence Score</string>
     <string name="result_label">Result Label</string>
     <string name="image_analisis">image_analisis</string>
+    <string name="view_history">View History</string>
 </resources>

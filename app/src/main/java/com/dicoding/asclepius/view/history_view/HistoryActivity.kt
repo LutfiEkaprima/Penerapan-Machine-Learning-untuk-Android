@@ -27,6 +27,7 @@ class HistoryActivity : AppCompatActivity() {
                 putExtra("IMAGE_URI", result.imageUri)
                 putExtra("RESULTS", result.resultLabel)
                 putExtra("SCORE", result.confidenceScore)
+                putExtra("FROM_HISTORY", true)
             }
             startActivity(intent)
         }

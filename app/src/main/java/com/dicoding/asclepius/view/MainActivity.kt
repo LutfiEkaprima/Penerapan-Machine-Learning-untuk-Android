@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -40,14 +41,24 @@ class MainActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListen
         )
 
         binding.galleryButton.setOnClickListener {
-            if (checkStoragePermission()) {
-                startGallery()
+            if (isStoragePermissionRequired()) {
+                if (checkStoragePermission()) {
+                    startGallery()
+                } else {
+                    requestStoragePermission()
+                }
             } else {
-                requestStoragePermission()
+                // Langsung buka galeri pada Android 10 ke atas
+                startGallery()
             }
         }
 
         binding.analyzeButton.setOnClickListener { analyzeImage() }
+    }
+
+    private fun isStoragePermissionRequired(): Boolean {
+        // Izin hanya diperlukan pada Android 9 atau lebih rendah
+        return Build.VERSION.SDK_INT <= Build.VERSION_CODES.P
     }
 
     private fun checkStoragePermission(): Boolean {

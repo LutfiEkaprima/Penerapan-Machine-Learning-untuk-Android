@@ -3,6 +3,7 @@ package com.dicoding.asclepius.view
 import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -30,6 +31,12 @@ class ResultActivity : AppCompatActivity() {
         val imageUriString = intent.getStringExtra("IMAGE_URI")
         val classificationResult = intent.getStringExtra("RESULTS")
         val classificationScore = intent.getFloatExtra("SCORE", 0.0f)
+
+        val fromHistory = intent.getBooleanExtra("FROM_HISTORY", false)
+
+        if (fromHistory) {
+            binding.saveButton.visibility = View.GONE
+        }
 
         if (imageUriString != null) {
             val imageUri = Uri.parse(imageUriString)
