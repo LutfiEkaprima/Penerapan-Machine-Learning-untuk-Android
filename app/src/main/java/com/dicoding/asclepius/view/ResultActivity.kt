@@ -45,7 +45,10 @@ class ResultActivity : AppCompatActivity() {
 
         binding.saveButton.setOnClickListener {
             saveAnalysisResult(imageUriString, classificationResult, classificationScore)
+            binding.saveButton.isEnabled = false
+            binding.saveButton.text = "Saved"
         }
+
     }
 
     private fun saveAnalysisResult(imageUri: String?, resultLabel: String?, confidenceScore: Float) {
@@ -60,6 +63,7 @@ class ResultActivity : AppCompatActivity() {
                 analysisResultDatabase.analisysdao().insertResult(analysisResult)
                 runOnUiThread {
                     Toast.makeText(this@ResultActivity, "Hasil analisis berhasil disimpan", Toast.LENGTH_SHORT).show()
+                    binding.saveButton.isEnabled = false
                 }
             }
         } else {

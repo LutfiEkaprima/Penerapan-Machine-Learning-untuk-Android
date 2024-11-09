@@ -1,4 +1,4 @@
-package com.dicoding.asclepius.view
+package com.dicoding.asclepius.view.history_view
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.asclepius.database.room.AnalysisResultDatabase
 import com.dicoding.asclepius.databinding.ActivityHistoryBinding
+import com.dicoding.asclepius.view.ResultActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

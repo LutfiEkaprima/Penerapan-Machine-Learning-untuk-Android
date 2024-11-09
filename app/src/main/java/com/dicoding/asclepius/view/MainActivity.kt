@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat
 import com.dicoding.asclepius.R
 import com.dicoding.asclepius.databinding.ActivityMainBinding
 import com.dicoding.asclepius.helper.ImageClassifierHelper
+import com.dicoding.asclepius.view.history_view.HistoryActivity
 import org.tensorflow.lite.task.vision.classifier.Classifications
 
 class MainActivity : AppCompatActivity(), ImageClassifierHelper.ClassifierListener {
